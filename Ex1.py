@@ -1,4 +1,9 @@
-meses = ('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro')
+meses = (
+    'Janeiro', 'Fevereiro', 'Março', 
+    'Abril', 'Maio', 'Junho', 
+    'Julho', 'Agosto', 'Setembro', 
+    'Outubro', 'Novembro', 'Dezembro'
+)
 
 Pagamentos = [39, 716, 610, 354, 84, 924, 261, 349, 150, 14, 400, 200]
 
@@ -18,3 +23,10 @@ print(f"Que ocorreu no mes {posMenor} ou seja em {mesDoMenor}")
 
 media = sum(Pagamentos) / len(Pagamentos)
 print(f"A média foi de {media} reais")
+
+for i in range(len(Pagamentos)):
+    if Pagamentos[i] > media:
+        mesAcimaDaMedia = meses[i]
+        print(f"O mes {mesAcimaDaMedia} está acima da média")
+
+print("Obrigado por usar o programa")
