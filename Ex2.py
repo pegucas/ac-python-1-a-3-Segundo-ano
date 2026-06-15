@@ -1,32 +1,69 @@
-meses = (
-    'Janeiro', 'Fevereiro', 'Março', 
-    'Abril', 'Maio', 'Junho', 
-    'Julho', 'Agosto', 'Setembro', 
-    'Outubro', 'Novembro', 'Dezembro'
+Assentos = (
+    "1A", "1B", "1C",
+    "2A", "2B", "2C",
+    "3A", "3B", "3C",
+    "4A", "4B", "4C",
+    "5A", "5B", "5C",
+    "6A", "6B", "6C",
+    "7A", "7B"
 )
 
-Pagamentos = [39, 716, 610, 354, 84, 924, 261, 349, 150, 14, 400, 200]
+Livre = 0
+Ocupado = 1
 
-maiorPagamento = max(Pagamentos)
-menorPagamento = min(Pagamentos)
+Ocupacao = (
+    Livre, Ocupado, Livre,
+    Ocupado, Livre, Ocupado,
+    Ocupado, Ocupado, Livre,
+    Livre, Livre, Ocupado,
+    Ocupado, Livre, Livre,
+    Ocupado, Ocupado, Ocupado,
+    Ocupado, Livre
+)
 
-posMaior = Pagamentos.index(maiorPagamento)
-mesDoMaior = meses[posMaior]
-posMenor = Pagamentos.index(menorPagamento)
-mesDoMenor = meses[posMenor]
+print("Estes são todos os nossos assentos")
+print(Assentos)
+print("-" * 45)
 
-print(f"Maior valor de venda: {maiorPagamento} em reais")
-print(f"Que ocorreu no mes {posMaior} ou seja em {mesDoMaior}")
+Livres = 0
+print("Estes são os livres: ")
+for i in range(len(Ocupacao)):
+    if Ocupacao[i] == Livre:
+        Livres = Livres + 1
+        AssentoLivre = Assentos[i]
+        print(f"O assento {AssentoLivre} está livre para ser usado")
+        print("-" * 39)
 
-print(f"Menor valor de venda: {menorPagamento} em reais")
-print(f"Que ocorreu no mes {posMenor} ou seja em {mesDoMenor}")
+print("-" * 45)
 
-media = sum(Pagamentos) / len(Pagamentos)
-print(f"A média foi de {media} reais")
+Ocupados = 0
+print("Estes são os ocupados: ")
+for i in range(len(Ocupacao)):
+    if Ocupacao[i] == Ocupado:
+        Ocupados = Ocupados + 1
+        AssentoOcupado = Assentos[i]
+        print(f"O assento {AssentoOcupado} está ocupado")
+        print("-" * 39)
 
-for i in range(len(Pagamentos)):
-    if Pagamentos[i] > media:
-        mesAcimaDaMedia = meses[i]
-        print(f"O mes {mesAcimaDaMedia} está acima da média")
+print(f"De todos os assentos {Livres} estão livres e {Ocupados} estão ocupados")
 
-print("Obrigado por usar o programa")
+pergunta = input("Voce quer pesquisar os Status de um assento? (S/N): ").upper()
+if pergunta == "S":
+
+    Pesquisa = input("Qual o assento que voce gostaria (Numero + Letra): ")
+
+    if Pesquisa in Assentos:
+        print("O assento existe e está: ")
+        Ocup = Assentos.index(Pesquisa)
+        LivreOuNao = Ocupacao[Ocup]
+        
+        if LivreOuNao == 0:
+            print("LIVRE")
+        else:
+            print("OCUPADO")
+
+    else:
+        print("O assento requerido não existe")
+
+else:
+    print("Saindo...")
